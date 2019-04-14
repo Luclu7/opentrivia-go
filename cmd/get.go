@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"encoding/json"
+	"github.com/mgutz/ansi"
 	"github.com/spf13/cobra"
 	resty "gopkg.in/resty.v1"
 	"html"
@@ -59,8 +60,9 @@ var getCmd = &cobra.Command{
 			println("Question: " + html.UnescapeString(results.Question))
 			println("Correct answer: " + html.UnescapeString(results.CorrectAnswer))
 			println("Incorrect answers: " + html.UnescapeString(results.IncorrectAnswers[0]) + ", " + html.UnescapeString(results.IncorrectAnswers[1]) + ", " + html.UnescapeString(results.IncorrectAnswers[2]))
+			correct := ansi.Color(" (correct)", "green")
 			var a [4]string
-			a[0] = html.UnescapeString(results.CorrectAnswer + " (correct)")
+			a[0] = html.UnescapeString(ansi.Color(results.CorrectAnswer+correct, "green"))
 			a[1] = html.UnescapeString(results.IncorrectAnswers[0])
 			a[2] = html.UnescapeString(results.IncorrectAnswers[1])
 			a[3] = html.UnescapeString(results.IncorrectAnswers[2])
