@@ -60,7 +60,7 @@ var getCmd = &cobra.Command{
 			println("Correct answer: " + html.UnescapeString(results.CorrectAnswer))
 			println("Incorrect answers: " + html.UnescapeString(results.IncorrectAnswers[0]) + ", " + html.UnescapeString(results.IncorrectAnswers[1]) + ", " + html.UnescapeString(results.IncorrectAnswers[2]))
 			var a [4]string
-			a[0] = html.UnescapeString(results.CorrectAnswer)
+			a[0] = html.UnescapeString(results.CorrectAnswer + " (correct)")
 			a[1] = html.UnescapeString(results.IncorrectAnswers[0])
 			a[2] = html.UnescapeString(results.IncorrectAnswers[1])
 			a[3] = html.UnescapeString(results.IncorrectAnswers[2])
